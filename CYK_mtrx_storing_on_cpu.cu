@@ -126,7 +126,7 @@ bool MatrixAdd(uint32_t* A, uint32_t* B, int rows, int cols) {
         uint32_t tmp = A[r * num_columns + c];
         uint32_t res = (tmp | B [r * num_columns + c])  ;     
         if ( res != tmp){
-            A[r * num_columns + c] |= B [r * num_columns + c];
+            A[r * num_columns + c] |= res;
             isDiff = true;
         }
     }

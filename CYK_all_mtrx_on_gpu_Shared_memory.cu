@@ -143,8 +143,10 @@ __global__ void addToLeftSqMtrxDevice(uint32_t *A, uint32_t *B, int rows, int co
   
     for (int i = startInd; i <= endInd; i++){
         uint32_t tmp = A[i];
-        A[i] |= B[i];
-        if (A[i] != tmp){
+        uint32_t res = (tmp | B[i]);
+        
+        if (res != tmp){
+            A[i] |= res;
             is_changed = 1;
         }
     }
